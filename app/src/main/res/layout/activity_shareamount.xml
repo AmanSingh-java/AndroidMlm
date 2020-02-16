@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="#000000"
+    android:padding="30dp"
+    android:layout_height="match_parent"
+    tools:context=".shareamount">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/orange_400"
+        android:layout_marginTop="40dp"
+
+        android:text="Number of Share"
+        android:textSize="25dp"
+        ></TextView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+android:id="@+id/sharedamount"
+        android:background="@drawable/edt_ractangle_back"
+        android:inputType="number"
+        android:maxLength="50"
+        android:layout_marginTop="30dp"
+        android:maxLines="1"
+        android:hint="enter amount"
+        android:singleLine="true"
+        android:textColor="@color/orange_50"
+        android:textColorHint="@color/orange_400"
+        android:theme="@style/EditText.Grey" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/orange_400"
+        android:layout_marginTop="40dp"
+
+        android:text="Total amount"
+        android:textSize="25dp"
+        ></TextView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+android:id="@+id/totalamount"
+        android:background="@drawable/edt_ractangle_back"
+        android:inputType="number"
+
+        android:maxLength="50"
+        android:layout_marginTop="30dp"
+        android:maxLines="1"
+        android:hint="enter amount"
+        android:singleLine="true"
+        android:textColor="@color/orange_50"
+        android:textColorHint="@color/orange_400"
+        android:theme="@style/EditText.Grey" />
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="5dp"
+        android:text="confirm"
+        android:background="@drawable/shapeorange"
+        android:layout_marginTop="100dp"
+        android:textSize="25dp"
+        android:id="@+id/sendconfirm"
+
+
+        android:hint="enter account no."
+        android:singleLine="true"
+        />
+
+
+</LinearLayout>

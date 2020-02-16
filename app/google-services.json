@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "134105145589",
+    "firebase_url": "https://mlmfirebaseproject-82e76.firebaseio.com",
+    "project_id": "mlmfirebaseproject-82e76",
+    "storage_bucket": "mlmfirebaseproject-82e76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134105145589:android:804281557831488a00a5bc",
+        "android_client_info": {
+          "package_name": "com.finnotive.mlm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134105145589-vmrh3svo1bg8d3kfd83m3r0epn1qlodl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finnotive.mlm",
+            "certificate_hash": "3fea46d2219d9dbd7d859de5b97b25bd4a287944"
+          }
+        },
+        {
+          "client_id": "134105145589-8a2nb2tfr888tjoc7eo1lehjigt7ht5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvZD_OhHqoIU9aNAWJN8suVcCXq3euTt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134105145589-8a2nb2tfr888tjoc7eo1lehjigt7ht5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

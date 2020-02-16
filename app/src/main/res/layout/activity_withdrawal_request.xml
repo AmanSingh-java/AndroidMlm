@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:gravity="center_horizontal"
+    android:padding="30dp"
+    android:layout_height="match_parent"
+    tools:context=".withdrawalRequest">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/edt_ractangle_back"
+        android:hint="Amount"
+        android:textSize="25dp"
+        android:id="@+id/amount_withdrawlrequest"
+
+        android:textColorHint="@color/orange_400"> </EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Bank name"
+        android:background="@drawable/edt_ractangle_back"
+        android:textSize="25dp"
+        android:id="@+id/bankname_withdrawlrequest"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edt_ractangle_back"
+        android:hint="Account_no"
+        android:textSize="25dp"
+        android:id="@+id/account_no_withdrawlrequest"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Account name"
+        android:background="@drawable/edt_ractangle_back"
+        android:textSize="25dp"
+        android:id="@+id/accountname_withdrawlrequest"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Ifsc"
+        android:background="@drawable/edt_ractangle_back"
+        android:textSize="25dp"
+        android:id="@+id/ifsc_withdrawlrequest"
+        android:textColorHint="@color/orange_400"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="send"
+        android:textSize="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_withdrawlrequest"
+        android:background="@drawable/shapeorange"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

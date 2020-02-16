@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".rechargeByBank">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:hint="Trans_Type"
+        android:textSize="25dp"
+        android:textColor="@color/background"
+        android:id="@+id/trans_type"
+        android:background="@drawable/custom"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Name"
+        android:textSize="25dp"
+        android:textColor="@color/background"
+        android:id="@+id/name_reachargebybank"
+        android:background="@drawable/custom"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Amount"
+        android:textColor="@color/background"
+        android:textSize="25dp"
+        android:id="@+id/amount_reachargebybank"
+        android:background="@drawable/custom"
+        android:textColorHint="@color/orange_400"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Payment_mode"
+        android:textColor="@color/background"
+        android:textSize="25dp"
+        android:id="@+id/payment_mode"
+        android:background="@drawable/custom"
+        android:textColorHint="@color/orange_400"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="send"
+        android:textSize="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_reachargebybank"
+        android:background="@drawable/shapeorange"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+
+</LinearLayout>
