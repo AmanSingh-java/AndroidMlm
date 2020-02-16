@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@android:color/white"
-    android:gravity="center"
+    android:background="@color/overlay_dark_10"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".OpenGroup">
 
@@ -20,17 +20,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:orientation="vertical"
-            android:padding="@dimen/spacing_middle">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
                 android:background="@drawable/custom"
-                android:backgroundTint="@color/overlay_dark_40"
+                android:backgroundTint="@android:color/white"
                 android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/spacing_large"
                 tools:ignore="UseCompoundDrawables">
 
                 <LinearLayout
@@ -43,7 +41,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="@string/easy_steps_to_work_and_grow_with_finnotive_family"
-                        android:textColor="@color/orange_400"
                         android:textSize="17sp"
                         tools:ignore="UnusedAttribute" />
 
@@ -55,7 +52,6 @@
                             android:id="@+id/nested_scroll_view"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/overlay_dark_40"
                             android:scrollbars="none"
                             android:scrollingCache="true">
 
@@ -80,7 +76,7 @@
                                         android:fontFamily="sans-serif"
                                         android:text="@string/refer_your_friends_to_earn_the_referral_money_click_here_to_invite"
                                         android:textSize="13sp"
-                                        android:textColor="@android:color/white"
+                                        android:textColor="@color/overlay_dark_40"
                                         android:layout_marginBottom="10dp"
                                         tools:targetApi="jelly_bean">
 
@@ -92,7 +88,7 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="sans-serif"
                                         android:layout_marginBottom="10dp"
-                                        android:textColor="@android:color/white"
+                                        android:textColor="@color/overlay_dark_40"
                                         android:text="@string/reacharge_your_wallet_to_get_started"
                                         android:textSize="13sp"
                                         tools:targetApi="jelly_bean">
@@ -106,7 +102,7 @@
                                         android:fontFamily="sans-serif"
                                         android:text="@string/purchase_the_shares_and_reap_the_benefits"
                                         android:textSize="13sp"
-                                        android:textColor="@android:color/white"
+                                        android:textColor="@color/overlay_dark_40"
                                         android:layout_marginBottom="10dp"
                                         tools:ignore="UnusedAttribute">
 
@@ -135,9 +131,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/spacing_large"
             android:layout_marginBottom="@dimen/spacing_large"
             android:background="@drawable/custom"
+            android:backgroundTint="@android:color/white"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -225,6 +221,105 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="E-wallet"
+                    android:textColor="@color/background"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:background="@drawable/custom"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/withdraw"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/withdraw"
+                    android:gravity="center"
+
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/background"
+                    android:text="withdraw"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/itoe"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/transfer"
+                    android:gravity="center"
+
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/background"
+                    android:text="I to E"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/topup"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/home"
+                    android:gravity="center"
+
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/background"
+                    android:gravity="center"
+                    android:text="Top Up"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/bankrequest"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/museum"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Bank Request"
                     android:textColor="@color/background"/>
             </LinearLayout>
 
