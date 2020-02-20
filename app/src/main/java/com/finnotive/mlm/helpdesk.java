@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class helpdesk extends AppCompatActivity {
 
@@ -16,8 +17,8 @@ public class helpdesk extends AppCompatActivity {
         setContentView(R.layout.activity_helpdesk);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button generateticket=findViewById(R.id.generateticket);
-        Button tickethistory=findViewById(R.id.tickethistory);
+        ImageButton generateticket=findViewById(R.id.genrateticket);
+        ImageButton tickethistory=findViewById(R.id.tickethistory);
         generateticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,10 +34,7 @@ public class helpdesk extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent a = new Intent(getApplicationContext(),Dashboad.class);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
+        startActivity(new Intent(getApplicationContext(),Dashboad.class));
+        finish();
     }
 }

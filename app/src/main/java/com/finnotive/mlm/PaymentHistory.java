@@ -1,18 +1,19 @@
 package com.finnotive.mlm;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.finnotive.mlm.expendableadapter.PaymentHistoryViewAdapter;
 import com.finnotive.mlm.expendableadapter.ShareListViewAdapter;
 
 import org.json.JSONArray;
@@ -24,52 +25,46 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class ViewShare extends AppCompatActivity {
+public class PaymentHistory extends AppCompatActivity {
     private String groupid;
     private ListView listView;
     List<SharePojo> list = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_share);
+        setContentView(R.layout.activity_payment_history);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Intent i = getIntent();
-        groupid = i.getStringExtra("groupId");
         listView = findViewById(R.id.listshare);
         getShare();
-
     }
-
     void getShare() {
 
         try {
 
 
-            StringRequest sr = new StringRequest(Request.Method.POST, Constrains.viewshare, response -> {
+            StringRequest sr = new StringRequest(Request.Method.POST, Constrains.paymentHistory, response -> {
 
                 //  ProgressBarUtil.dismiss();
                 //  Toast.makeText(getApplicationContext(), "responce " + response.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("MyApp", "response " + response);
                 try {
                     JSONObject json = new JSONObject(response);
-                    JSONArray jsonArray = json.getJSONArray("ShareGroupTable");
+                    JSONArray jsonArray = json.getJSONArray("PaymentHistory");
                     Log.d("MyApp", jsonArray.toString());
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         SharePojo runingGruopPojo = new SharePojo();
 
-                        runingGruopPojo.setGroupid(jsonObject.getString("group_id_id"));
+                        runingGruopPojo.setGroupid(jsonObject.getString("payment_id"));
                         runingGruopPojo.setStartdate(jsonObject.getString("created_date").substring(0, 10));
-                        runingGruopPojo.setEnddate(jsonObject.getString("s_status"));
-                        runingGruopPojo.setShareid(jsonObject.getString("share_id"));
+                        runingGruopPojo.setEnddate(jsonObject.getString("recipient_id"));
+                        runingGruopPojo.setShareid(jsonObject.getString("amount"));
+                        runingGruopPojo.setDesc(jsonObject.getString("description"));
                         Log.d("MyApp", "share view " + runingGruopPojo);
                         list.add(runingGruopPojo);
-
-
                     }
-                    listView.setAdapter(new ShareListViewAdapter(getApplicationContext(), list));
+                    listView.setAdapter(new PaymentHistoryViewAdapter(getApplicationContext(), list));
 
 
                 } catch (Exception e) {
@@ -85,8 +80,7 @@ public class ViewShare extends AppCompatActivity {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     //SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES,getActivity().MODE_PRIVATE);
-                    params.put("UserId", SharedpreferenceUtility.getInstance(getApplicationContext()).getString("primaryNumber"));
-                    params.put("GroupId", groupid);
+                    params.put("user_id", SharedpreferenceUtility.getInstance(getApplicationContext()).getString("primaryNumber"));
 
                     return params;
 

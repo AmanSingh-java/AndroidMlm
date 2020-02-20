@@ -17,36 +17,93 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".ViewProfile"></activity>
-        <activity android:name=".ViewShare" />
-        <activity android:name=".withdrawalRequest" />
-        <activity android:name=".rechargeByBank" />
-        <activity android:name=".transferEwallet" />
-        <activity android:name=".fundTransfer" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".WithrawHistory"></activity>
+        <activity android:name=".PaymentHistory" />
+        <activity
+            android:name=".ViewProfile"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ViewShare"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".withdrawalRequest"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".rechargeByBank"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".transferEwallet"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".fundTransfer"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ProfileActivity"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".PaymentConfirmation"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
-        <activity android:name=".GroupJoining" />
-        <activity android:name=".shareamount" />
-        <activity android:name=".submit" />
-        <activity android:name=".ticket_history" />
-        <activity android:name=".generateticket" />
-        <activity android:name=".helpdesk" />
-        <activity android:name=".setting" />
-        <activity android:name=".ui.tools.refer" />
-        <activity android:name=".ui.tools.mycommunity" />
-        <activity android:name=".ui.tools.mybusiness" />
-        <activity android:name=".ui.tools.Referrallist" />
-        <activity android:name=".ui.tools.Main2Activityaddnew" />
-        <activity android:name=".mycommunitynetwork" />
-        <activity android:name=".topup" />
-        <activity android:name=".sendconfirm" />
-        <activity android:name=".sendtoewallet" />
-        <activity android:name=".confirm" />
-        <activity android:name=".withraw" />
-        <activity android:name=".Iwallet" />
-        <activity android:name=".Ewallet" />
+        <activity
+            android:name=".GroupJoining"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".shareamount"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".submit"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ticket_history"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".generateticket"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".helpdesk"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".setting"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.tools.refer"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.tools.mycommunity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.tools.mybusiness"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.tools.Referrallist"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".ui.tools.Main2Activityaddnew"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".mycommunitynetwork"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".topup"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".sendconfirm"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".sendtoewallet"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".confirm"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".withraw"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Iwallet"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Ewallet"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".Dashboad"
             android:label="@string/title_activity_dashboad"

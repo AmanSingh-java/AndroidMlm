@@ -1,17 +1,16 @@
 package com.finnotive.mlm;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -28,29 +27,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class withraw extends AppCompatActivity {
-    private TextInputEditText enteramount,enterbankname,enteraccountno,reenteraccount,enterholdername,enterifsc;
-    private  RegistrationModel registrationModel;
+    private TextInputEditText enteramount, enterbankname, enteraccountno, reenteraccount, enterholdername, enterifsc;
+    private RegistrationModel registrationModel;
     private AlertDialog.Builder builder;
+    private String balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitywithraw);
-        Toolbar toolbar=findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button confirm=findViewById(R.id.confirmwithdraw);
-        enteramount=findViewById(R.id.enteramount);
-        enterbankname=findViewById(R.id.enterbankname);
-        enteraccountno=findViewById(R.id.enteraccountno);
-        reenteraccount=findViewById(R.id.reenteraccountno);
-        enterifsc=findViewById(R.id.enterifsccode);
-        builder=new AlertDialog.Builder(this);
-        enterholdername=findViewById(R.id.enterholdername);
+        Button confirm = findViewById(R.id.confirmwithdraw);
+        Intent i=getIntent();
+        balance=i.getStringExtra("iwallet");
+        enteramount = findViewById(R.id.enteramount);
+        enterbankname = findViewById(R.id.enterbankname);
+        enteraccountno = findViewById(R.id.enteraccountno);
+        reenteraccount = findViewById(R.id.reenteraccountno);
+        enterifsc = findViewById(R.id.enterifsccode);
+        builder = new AlertDialog.Builder(this);
+        enterholdername = findViewById(R.id.enterholdername);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check()){
-getdata();
+                if (check()) {
+                    getdata();
                 }
             }
         });
@@ -59,37 +61,37 @@ getdata();
     }
 
     Boolean check() {
-        if(enteramount.getText().toString().equalsIgnoreCase(null)){
+        if (enteramount.getText().toString().equalsIgnoreCase(null)) {
             enteramount.setError("please enter The amount");
             enteramount.requestFocus();
             return false;
 
         }
-        if(enterbankname.getText().toString().equalsIgnoreCase(null)){
+        if (enterbankname.getText().toString().equalsIgnoreCase(null)) {
             enterbankname.setError("please enter the bank Name");
             enterbankname.requestFocus();
             return false;
 
         }
-        if(enteraccountno.getText().toString().equalsIgnoreCase(null)){
+        if (enteraccountno.getText().toString().equalsIgnoreCase(null)) {
             enteraccountno.setError("please enter the bank Account");
             enteraccountno.requestFocus();
             return false;
 
         }
-        if(!reenteraccount.getText().toString().equalsIgnoreCase(enteraccountno.getText().toString())){
+        if (!reenteraccount.getText().toString().equalsIgnoreCase(enteraccountno.getText().toString())) {
             reenteraccount.setError("please enter the bank Account");
             reenteraccount.requestFocus();
             return false;
 
         }
-        if(enterholdername.getText().toString().equalsIgnoreCase(null)){
+        if (enterholdername.getText().toString().equalsIgnoreCase(null)) {
             enterholdername.setError("please enter the Account Holder Name");
             enterholdername.requestFocus();
             return false;
 
         }
-        if(enterifsc.getText().toString().equalsIgnoreCase(null)){
+        if (enterifsc.getText().toString().equalsIgnoreCase(null)) {
             enterifsc.setError("please enter the ifsc code");
             enterifsc.requestFocus();
             return false;
@@ -98,6 +100,7 @@ getdata();
 
         return true;
     }
+
     void getdata() {
 
 
@@ -113,9 +116,9 @@ getdata();
                     //   Toast.makeText(getApplicationContext(), "responce " + response.toString(), Toast.LENGTH_SHORT).show();
                     Log.d("MyApp", "response " + response);
                     try {
-                        JSONObject jsonObject=new JSONObject(response);
-                        String res=jsonObject.getString("amount");
-                        if(!res.equalsIgnoreCase(null)){
+                        JSONObject jsonObject = new JSONObject(response);
+                        String res = jsonObject.getString("amount");
+                        if (!res.equalsIgnoreCase(null)) {
                             msg();
                         }
 
@@ -141,7 +144,7 @@ getdata();
                     params.put("user_id", SharedpreferenceUtility.getInstance(getApplicationContext()).getString("primaryNumber"));
 
                     params.put("bank_name", enterbankname.getText().toString());
-                    params.put("account_name",enterholdername .getText().toString());
+                    params.put("account_name", enterholdername.getText().toString());
                     params.put("amount", enteramount.getText().toString());
                     params.put("ifsc", enterifsc.getText().toString());
                     params.put("account_no", enteraccountno.getText().toString());
@@ -150,8 +153,6 @@ getdata();
                     return params;
 
                 }
-
-
 
 
             };
@@ -166,24 +167,18 @@ getdata();
 
 
     }
+
     void msg() {
         builder.setMessage("Thanks").setTitle("Transfered");
 
         //Setting message manually and performing action on button click
         builder.setMessage("You have transfered amount successfully")
                 .setCancelable(false)
-                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(),Dashboad.class));
+                        startActivity(new Intent(getApplicationContext(), Dashboad.class));
                         finish();
 
-                    }
-                })
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
-                        startActivity(new Intent(getApplicationContext(),Dashboad.class));
-                        finish();
                     }
                 });
         //Creating dialog box
@@ -192,12 +187,10 @@ getdata();
         alert.setTitle("Success");
         alert.show();
     }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
+        startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet",balance));
+        finish();
     }
 }

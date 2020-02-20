@@ -4,17 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@android:color/white">
+    android:background="@color/overlay_dark_10">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:layout_marginTop="0dp"
-        android:background="@drawable/custom"
         android:layout_margin="20dp"
         android:backgroundTint="@android:color/white"
-        android:layout_gravity="center"
         android:id="@+id/view"
         android:orientation="vertical">
         <ImageView
@@ -34,7 +31,6 @@
                 android:orientation="vertical"
                 android:id="@+id/opengroup"
                 android:paddingTop="@dimen/spacing_middle"
-                android:background="@drawable/custom"
                 android:paddingBottom="@dimen/spacing_middle">
 
 
@@ -89,35 +85,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/custom"
+            android:orientation="vertical"
+            android:background="@android:color/white"
             tools:ignore="RtlSymmetry">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/join_group"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageButton
                 android:id="@+id/joingroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
+                android:background="@drawable/joingroup"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:text="@string/primary"
-                android:tint="@android:color/white"
-                app:backgroundTint="@color/colorPrimary"
-                app:fabSize="normal"
-                app:rippleColor="@color/grey_5"
-                app:srcCompat="@drawable/ic_add"
-                tools:ignore="VectorDrawableCompat"
                 android:layout_marginStart="@dimen/spacing_large" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="@string/join_group"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

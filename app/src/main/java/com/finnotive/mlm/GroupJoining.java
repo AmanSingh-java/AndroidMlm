@@ -104,6 +104,22 @@ public class GroupJoining extends AppCompatActivity implements View.OnClickListe
 
         getData();
     }
+    String date(String str){
+        String[] arrOfStr = str.split("-");
+        String a="";
+        for(int i=0;i<3;i++){
+            a=a+arrOfStr[2-i]+"-";
+        }
+        System.out.println(a);
+        String result = null;
+        if ((a != null) && (a.length() > 0)) {
+            result = a.substring(0, str.length());
+        }
+        return result;
+
+
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -140,8 +156,8 @@ public class GroupJoining extends AppCompatActivity implements View.OnClickListe
                         if (Integer.parseInt(jsonObject.getString("state")) == 1) {
                             if (Integer.parseInt(jsonObject.getString("g_status")) == 0) {
                                 groupid.setText(jsonObject.getString("group_id"));
-                                startdate.setText(jsonObject.getString("EffectiveStartDate"));
-                                enddate.setText(jsonObject.getString("EffectiveEndDateEffectiveEndDate"));
+                                startdate.setText(date(jsonObject.getString("EffectiveStartDate")));
+                                enddate.setText(date(jsonObject.getString("EffectiveEndDateEffectiveEndDate")));
                             }
                         }
                     }
@@ -174,12 +190,9 @@ public class GroupJoining extends AppCompatActivity implements View.OnClickListe
           //  Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        Intent a = new Intent(getApplicationContext(),Dashboad.class);
-//        a.addCategory(Intent.CATEGORY_HOME);
-//        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(a);
-//    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),Dashboad.class));
+        finish();
+    }
 }

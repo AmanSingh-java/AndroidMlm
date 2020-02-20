@@ -21,6 +21,7 @@ public class Ewallet extends AppCompatActivity {
 
         Intent i=getIntent();
         amount=i.getStringExtra("ewallet");
+        SharedpreferenceUtility.getInstance(this).putString("ewallet",amount);
         txtamout.setText(amount);
         Button topup=findViewById(R.id.topup);
         topup.setOnClickListener(new View.OnClickListener() {

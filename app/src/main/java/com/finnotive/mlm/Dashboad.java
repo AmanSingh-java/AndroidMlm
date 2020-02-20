@@ -85,7 +85,12 @@ public class Dashboad extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
-
+            case R.id.payhistory:
+                startActivity(new Intent(getApplicationContext(), PaymentHistory.class));
+                break;
+            case R.id.withhistory:
+                startActivity(new Intent(getApplicationContext(), WithrawHistory.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

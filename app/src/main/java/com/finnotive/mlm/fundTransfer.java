@@ -101,7 +101,10 @@ public class fundTransfer extends AppCompatActivity {
                         JSONObject jsonObject=new JSONObject(response);
                         String res=jsonObject.getString("amount");
                         if(!res.equalsIgnoreCase(null)){
-                            msg();
+                            msg("Amount Transferred successfully","Success");
+                        }else if(jsonObject.getString("Messasg").contains("Wallet does not have sufficient amount "))
+                        {
+                            msg("Wallet does not have sufficient amount or  recipient id does not exist","Fail");
                         }
 
                     } catch (Exception e) {
@@ -116,6 +119,7 @@ public class fundTransfer extends AppCompatActivity {
                     //  ProgressBarUtil.dismiss();
                     Log.d("MyApp", error.toString());
                     //   Log.d("MyApp", error.getMessage());
+                    msg("Wallet does not have sufficient amount ","Fail");
 
                 }
             }) {
@@ -146,30 +150,29 @@ public class fundTransfer extends AppCompatActivity {
 
 
     }
-    void msg() {
+    void msg(String msg,String title) {
         builder.setMessage("Thanks").setTitle("Transfered");
 
         //Setting message manually and performing action on button click
-        builder.setMessage("You have transfered amount successfully")
+        builder.setMessage(msg)
                 .setCancelable(false)
-                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         startActivity(new Intent(getApplicationContext(),Dashboad.class));
                         finish();
 
-                    }
-                })
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(),Dashboad.class));
-                        finish();
                     }
                 });
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Success");
+        alert.setTitle(title);
         alert.show();
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),Ewallet.class).putExtra("ewallet",SharedpreferenceUtility.getInstance(this).getString("ewallet")));
+        finish();
     }
 
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class CloseGroupFregment extends Fragment {
                 ViewModelProviders.of(this).get(ShareViewModel.class);
         View root = inflater.inflate(R.layout.fragment_close_group, container, false);
         linearLayout=root.findViewById(R.id.view);
-        FloatingActionButton join = root.findViewById(R.id.joingroup);
+        ImageButton join = root.findViewById(R.id.joingroup);
         join.setOnClickListener(v12 -> startActivity(new Intent(getContext(), GroupJoining.class)));
         getData();
 

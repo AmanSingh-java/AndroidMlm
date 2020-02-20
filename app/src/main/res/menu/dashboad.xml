@@ -23,4 +23,14 @@
         android:icon="@drawable/ic_menu_send"
         android:title="@string/logout"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/payhistory"
+        android:orderInCategory="100"
+        android:title="Payment History"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/withhistory"
+        android:orderInCategory="100"
+        android:title="Bank History"
+        app:showAsAction="never" />
 </menu>

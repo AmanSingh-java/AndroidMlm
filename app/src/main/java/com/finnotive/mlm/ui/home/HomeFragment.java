@@ -25,9 +25,10 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     View root;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         SharedpreferenceUtility.getInstance(getContext()).putBoolean("isLogin", true);
         initComponent(root);
         return root;
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
-        adapter.addFragment(DashboardFragment.newInstance(), "Dashboard");
+        adapter.addFragment(DashboardFragment.newInstance(), "Home");
         adapter.addFragment(OpenGroup.newInstance(), "Open Group");
         adapter.addFragment(RunningGroup.newInstance(), "Active Group");
         adapter.addFragment(CloseGroupFregment.newInstance(), "Close Group");

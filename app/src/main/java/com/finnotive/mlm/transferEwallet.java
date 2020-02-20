@@ -1,7 +1,5 @@
 package com.finnotive.mlm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -32,8 +32,8 @@ public class transferEwallet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_ewallet);
         registrationModel = new RegistrationModel();
-        ewalletamount=findViewById(R.id.ewalletamount);
-        sendewalletamount=findViewById(R.id.sendewalletamount);
+        ewalletamount = findViewById(R.id.ewalletamount);
+        sendewalletamount = findViewById(R.id.sendewalletamount);
         sendewalletamount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,6 @@ public class transferEwallet extends AppCompatActivity {
     }
 
 
-
     Boolean check() {
         registrationModel.setMobile(ewalletamount.getText().toString());
 
@@ -57,13 +56,8 @@ public class transferEwallet extends AppCompatActivity {
         }
 
 
-
-
-
         return true;
     }
-
-
 
 
     void getdata() {
@@ -105,8 +99,6 @@ public class transferEwallet extends AppCompatActivity {
                 }
 
 
-
-
             };
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             sr.setRetryPolicy(new DefaultRetryPolicy(0,
@@ -119,10 +111,11 @@ public class transferEwallet extends AppCompatActivity {
 
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent a = new Intent(getApplicationContext(),Dashboad.class);
+        Intent a = new Intent(getApplicationContext(), Dashboad.class);
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);

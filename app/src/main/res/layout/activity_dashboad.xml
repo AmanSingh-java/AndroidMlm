@@ -22,8 +22,6 @@
         app:headerLayout="@layout/nav_header_dashboad"
         app:itemTextColor="@color/orange_400"
         app:itemIconTint="@color/orange_400"
-        android:outlineAmbientShadowColor="@color/orange_400"
-        android:outlineSpotShadowColor="@color/orange_400"
         app:menu="@menu/activity_dashboad_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

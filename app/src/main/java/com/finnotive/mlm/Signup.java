@@ -193,6 +193,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener, C
                             message("Refercode is not exist");
                             Log.d("MyApp", "Refercode   54 is not exist");
                         } else {
+                            message("Your account is successfully created");
                             SharedpreferenceUtility.getInstance(Signup.this.getApplicationContext()).putString(Constrains.refercode, refercoderes);
                         }
                     }

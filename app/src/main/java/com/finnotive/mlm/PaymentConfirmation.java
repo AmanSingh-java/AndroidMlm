@@ -18,7 +18,6 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -45,7 +44,7 @@ public class PaymentConfirmation extends AppCompatActivity implements View.OnCli
         txtamount = findViewById(R.id.totalamount);
         txtpay = findViewById(R.id.paymentamount);
         pay = findViewById(R.id.pay);
-        builder=new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(this);
         aggree = findViewById(R.id.accept_term);
         share = i.getStringExtra("share");
         amount = i.getStringExtra("amount");
@@ -87,8 +86,8 @@ public class PaymentConfirmation extends AppCompatActivity implements View.OnCli
                             Toast.makeText(PaymentConfirmation.this.getApplicationContext(), "You have Successfully purchased ", Toast.LENGTH_LONG).show();
 
                         } else if (statusCode == 400) {
-                            msg("You Have Insufficiant Balance");
-                            Toast.makeText(PaymentConfirmation.this.getApplicationContext(), "You Have Insufficiant Balance ", Toast.LENGTH_LONG).show();
+                            msg("You have insufficient balance");
+                            Toast.makeText(PaymentConfirmation.this.getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
                         }
 
 
@@ -106,11 +105,11 @@ public class PaymentConfirmation extends AppCompatActivity implements View.OnCli
                 Log.d("MyApp", error.toString());
                 //   Log.d("MyApp", error.getMessage());
                 if (statusCode == 400) {
-                    msg("You Have Insufficiant Balance");
-                    Toast.makeText(getApplicationContext(), "You Have Insufficiant Balance " + statusCode, Toast.LENGTH_LONG).show();
+                    msg("You have insufficient balance");
+                    Toast.makeText(getApplicationContext(), "You have insufficient balance " + statusCode, Toast.LENGTH_LONG).show();
                 }
                 msg("You Have Insufficiant Balance");
-                Toast.makeText(getApplicationContext(), "You Have Insufficiant Balance " + statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "You have insufficient balance " + statusCode, Toast.LENGTH_LONG).show();
 
             }) {
                 @Override
@@ -129,7 +128,7 @@ public class PaymentConfirmation extends AppCompatActivity implements View.OnCli
                 protected Response<String> parseNetworkResponse(NetworkResponse response) {
                     statusCode = response.statusCode;
                     if (statusCode == 400) {
-                        Toast.makeText(getApplicationContext(), "You Have Insufficiant Balance " + statusCode, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "You have insufficient balance " + statusCode, Toast.LENGTH_LONG).show();
                     }
                     return super.parseNetworkResponse(response);
                 }
@@ -155,8 +154,8 @@ public class PaymentConfirmation extends AppCompatActivity implements View.OnCli
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(),Dashboad.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-finish();
+                        startActivity(new Intent(getApplicationContext(), Dashboad.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        finish();
                     }
                 });
         //Creating dialog box
@@ -164,6 +163,12 @@ finish();
         //Setting the title manually
         alert.setTitle("Alert");
         alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), Dashboad.class));
+        finish();
     }
 
 }

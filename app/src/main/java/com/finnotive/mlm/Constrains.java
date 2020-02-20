@@ -13,6 +13,7 @@ public interface Constrains {
     String runninggroup = "http://103.145.50.189:8080/groupviewid/";
     String joingroup = "http://103.145.50.189:8080/group/";
     String profile = "http://103.145.50.189:8080/profile/";
+    String getprofile = "http://103.145.50.189:8080/getProfile/";
     String username ="username" ;
     String firstName ="firstname" ;
     String lastName ="lastname" ;
@@ -27,4 +28,6 @@ public interface Constrains {
     String wallet ="http://103.145.50.189:8080/CheckWallet/" ;
     String viewshare ="http://103.145.50.189:8080/shareview/" ;
     String  helpdesk ="http://103.145.50.189:8080/helpdesk/" ;
+    String  paymentHistory ="http://103.145.50.189:8080/checkPaymentHistory/" ;
+    String withdralhistory = "http://103.145.50.189:8080/checkWithdrawalRequest/";
 }

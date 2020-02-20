@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +21,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,25 +41,18 @@ public class OpenGroup extends Fragment {
     private TextView startdate;
     private AlertDialog.Builder builder;
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.open_group_fragment, container, false);
-        FloatingActionButton join = v.findViewById(R.id.joingroup);
-        LinearLayout opengroupshare = v.findViewById(R.id.opengroup);
+        ImageButton join = v.findViewById(R.id.joingroup);
         builder = new AlertDialog.Builder(getContext());
-        LinearLayout opengroupshares = v.findViewById(R.id.viewshares);
+        ImageButton opengroupshares = v.findViewById(R.id.viewshare);
+
         groupid = v.findViewById(R.id.groupid);
-        opengroupresponse=v.findViewById(R.id.opengroupresponse);
-        opengroupshare.setOnClickListener(v1 -> {
-            if (Integer.parseInt(groupid.getText().toString()) == 0) {
-                msg();
-            } else {
-                Intent i = new Intent(getContext(), ViewShare.class);
-                i.putExtra("groupId", groupid.getText().toString());
-                Objects.requireNonNull(getActivity()).startActivity(i);
-            }
-        });
+        opengroupresponse = v.findViewById(R.id.opengroupresponse);
+
         opengroupshares.setOnClickListener(v13 -> {
             if (Integer.parseInt(groupid.getText().toString()) == 0) {
                 msg();
@@ -71,7 +63,12 @@ public class OpenGroup extends Fragment {
             }
         });
         startdate = v.findViewById(R.id.efdate);
-        join.setOnClickListener(v12 -> startActivity(new Intent(getContext(), GroupJoining.class)));
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), GroupJoining.class));
+            }
+        });
         getData();
         return v;
 
@@ -98,8 +95,8 @@ public class OpenGroup extends Fragment {
                             if (Integer.parseInt(jsonObject.getString("g_status")) == 0) {
                                 groupid.setText(jsonObject.getString("group_id"));
                                 opengroupresponse.setText("Open Group Id");
-                                startdate.setText(jsonObject.getString("EffectiveStartDate"));
-                                enddate.setText(jsonObject.getString("EffectiveEndDateEffectiveEndDate"));
+                                startdate.setText(date(jsonObject.getString("EffectiveStartDate")));
+                                enddate.setText(date(jsonObject.getString("EffectiveEndDateEffectiveEndDate")));
 
 
                             }
@@ -137,20 +134,30 @@ public class OpenGroup extends Fragment {
         }
     }
 
+    String date(String str){
+        String[] arrOfStr = str.split("-");
+        String a="";
+        for(int i=0;i<3;i++){
+            a=a+arrOfStr[2-i]+"-";
+        }
+        System.out.println(a);
+        String result = null;
+        if ((a != null) && (a.length() > 0)) {
+            result = a.substring(0, str.length() );
+        }
+        return result;
+
+
+    }
+
     void msg() {
         //Setting message manually and performing action on button click
         builder.setMessage("You have not joined any group yet")
                 .setCancelable(false)
-                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
 
-                    }
-                })
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
-                        dialog.cancel();
                     }
                 });
         //Creating dialog box

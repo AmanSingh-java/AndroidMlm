@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -34,7 +35,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity implements View.OnClickListener, Constrains {
     private String Tag = "Login";
     private RegistrationModel registrationModel;
-    private TextInputEditText mobile, password;
+    private EditText mobile, password;
     private Button _login;
     private AlertDialog.Builder builder;
 
@@ -135,8 +136,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
                         String token = jsonObject.getString("token");
                         if (!response.contains("token")) {
-                            msg();
-                            //Uncomment the below code to Set the message and title from the strings.xml file
+                            msg("Mobile Number or Password does not exist. Do you want to retry ?");
 
                         } else {
 
@@ -158,7 +158,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
 
                     } catch (Exception e) {
                         Log.d("MyApp", "status" + e.toString());
-                        msg();
+                        msg("An Exception Occur");
                     }
 
                 }
@@ -166,7 +166,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     ProgressBarUtil.dismiss();
-                    msg();
+                    msg("internal server error");
                     NetworkResponse response = error.networkResponse;
                     if (error instanceof ServerError && response != null) {
                         try {
@@ -210,22 +210,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
         }
     }
 
-    void msg() {
-        builder.setMessage("Mobile Number or Password does not exist").setTitle("login fail");
+    void msg(String msg) {
+        builder.setMessage(msg).setTitle("login fail");
 
         //Setting message manually and performing action on button click
-        builder.setMessage("Mobile Number or Password does not exist. Do you want to retry ?")
+        builder.setMessage(msg)
                 .setCancelable(false)
-                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
 
-                    }
-                })
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
-                        dialog.cancel();
                     }
                 });
         //Creating dialog box

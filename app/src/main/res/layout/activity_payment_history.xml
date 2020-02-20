@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ViewShare">
+    tools:context=".PaymentHistory">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,10 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:layout_gravity="center"
         android:textColor="@color/background"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Share"/>
+        android:text="Payment History"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

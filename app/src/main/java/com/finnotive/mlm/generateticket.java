@@ -110,5 +110,10 @@ getData();
         alert.setTitle("Success");
         alert.show();
     }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),helpdesk.class));
+        finish();
+    }
 
 }

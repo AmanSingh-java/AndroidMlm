@@ -18,15 +18,12 @@ tools:showIn="navigation_view">
         android:title="@string/wallet" />
 
     <item
-        android:id="@+id/claim"
         android:icon="@drawable/ic_menu_send"
         android:title="@string/claim_wallet" />
     <item
-        android:id="@+id/help"
         android:icon="@drawable/ic_menu_send"
         android:title="@string/help_desk" />
     <item
-        android:id="@+id/referalincome"
         android:icon="@drawable/ic_menu_send"
         android:title="@string/referral_income" />
 

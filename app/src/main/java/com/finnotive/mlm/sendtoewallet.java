@@ -30,15 +30,16 @@ public class sendtoewallet extends AppCompatActivity {
     private Button send;
     int bal;
     private AlertDialog.Builder builder;
+    private String balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitysendtoe);
-        Toolbar toolbar=findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent i = getIntent();
-        String balance = i.getStringExtra("amount");
+       balance = i.getStringExtra("iwallet");
         amount = findViewById(R.id.amount);
         send = findViewById(R.id.btnconfirm);
         //bal = Integer.parseInt(amount.getText().toString());
@@ -52,7 +53,7 @@ public class sendtoewallet extends AppCompatActivity {
                 } else if (Integer.parseInt(amount.getText().toString()) <= Integer.parseInt(balance)) {
                     getData();
                 } else {
-                    amount.setError("Please Enter The Amount");
+                    amount.setError("Please Enter Valid Amount");
                     amount.requestFocus();
                 }
             }
@@ -70,11 +71,11 @@ public class sendtoewallet extends AppCompatActivity {
                 // Toast.makeText(getContext(), "responce " + response.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("MyApp", "response " + response);
                 try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    String res=jsonObject.getString("amount");
-                     if(!res.equalsIgnoreCase(null)){
+                    JSONObject jsonObject = new JSONObject(response);
+                    String res = jsonObject.getString("amount");
+                    if (!res.equalsIgnoreCase(null)) {
                         msg();
-                     }
+                    }
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());
@@ -90,7 +91,7 @@ public class sendtoewallet extends AppCompatActivity {
                     Map<String, String> params = new HashMap<>();
                     //SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES,getActivity().MODE_PRIVATE);
                     params.put("user_id", SharedpreferenceUtility.getInstance(getApplicationContext()).getString("primaryNumber"));
-                    params.put("amount",amount.getText().toString());
+                    params.put("amount", amount.getText().toString());
                     return params;
 
                 }
@@ -105,6 +106,7 @@ public class sendtoewallet extends AppCompatActivity {
             //   Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
     void msg() {
         builder.setMessage("Thanks").setTitle("Transfered");
 
@@ -113,7 +115,7 @@ public class sendtoewallet extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(),Dashboad.class));
+                        startActivity(new Intent(getApplicationContext(), Dashboad.class));
                         finish();
 
                     }
@@ -125,4 +127,10 @@ public class sendtoewallet extends AppCompatActivity {
         alert.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet",balance));
+        finish();
+    }
 }

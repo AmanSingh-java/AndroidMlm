@@ -1,14 +1,12 @@
 package com.finnotive.mlm;
 
 import android.content.Intent;
-import android.icu.lang.UCharacter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +27,12 @@ import java.util.Objects;
 
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
-    private ImageButton ewallet, iwallet,profile,joingroup;
+    private ImageButton ewallet, iwallet, profile, joingroup;
     private String ewalletamount, iwalletamount;
+    private ImageButton rechargebybank;
+    private ImageButton topup;
+    private ImageButton itoe;
+    private ImageButton withdraw;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -64,14 +66,22 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         TextView invite = v.findViewById(R.id.share);
         ewallet = v.findViewById(R.id.ewallet);
         iwallet = v.findViewById(R.id.iwallet);
-        profile=v.findViewById(R.id.profile);
-        joingroup=v.findViewById(R.id.view);
+        profile = v.findViewById(R.id.profile);
+        joingroup = v.findViewById(R.id.view);
+        rechargebybank=v.findViewById(R.id.rechagebybank);
+        topup=v.findViewById(R.id.topup);
+        itoe=v.findViewById(R.id.itoe);
+        withdraw=v.findViewById(R.id.withdraw);
         ewallet.setOnClickListener(this);
         iwallet.setOnClickListener(this);
         invite.setOnClickListener(this);
         profile.setOnClickListener(this);
         joingroup.setOnClickListener(this);
-       // name.setText(SharedpreferenceUtility.getInstance(getContext()).getString(Constrains.firstName));
+        rechargebybank.setOnClickListener(this);
+        topup.setOnClickListener(this);
+        withdraw.setOnClickListener(this);
+        itoe.setOnClickListener(this);
+
         getData();
         return v;
     }
@@ -80,15 +90,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iwallet:
-                getActivity().startActivity(new Intent(getContext(), Iwallet.class).putExtra("iwallet",iwalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                getActivity().startActivity(new Intent(getContext(), Iwallet.class).putExtra("iwallet", iwalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 Toast.makeText(getContext(), iwalletamount, Toast.LENGTH_LONG).show();
+                getActivity().finish();
 
-                Log.d("MyApp","iwallet"+iwalletamount);
+                Log.d("MyApp", "iwallet" + iwalletamount);
                 break;
             case R.id.ewallet:
-               getActivity().startActivity(new Intent(getContext(), Ewallet.class).putExtra("ewallet", ewalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                getActivity().startActivity(new Intent(getContext(), Ewallet.class).putExtra("ewallet", ewalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 Toast.makeText(getContext(), iwalletamount, Toast.LENGTH_LONG).show();
-                Log.d("MyApp","ewalletamount"+ewalletamount);
+                getActivity().finish();
+                Log.d("MyApp", "ewalletamount" + ewalletamount);
                 break;
             case R.id.share:
                 Intent share = new Intent(Intent.ACTION_SEND);
@@ -101,12 +113,33 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 share.putExtra(Intent.EXTRA_TEXT, "playstore url");
 
                 startActivity(Intent.createChooser(share, "Share link!"));
+                getActivity().finish();
                 break;
             case R.id.view:
-                getActivity().startActivity(new Intent(getContext(),GroupJoining.class));
+                getActivity().startActivity(new Intent(getContext(), GroupJoining.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
                 break;
             case R.id.profile:
-                getActivity().startActivity(new Intent(getContext(),ViewProfile.class));
+
+                getActivity().startActivity(new Intent(getContext(), ViewProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
+                break;
+            case R.id.rechagebybank:
+                getActivity().startActivity(new Intent(getContext(), rechargeByBank.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
+                break;
+            case R.id.topup:
+                getActivity().startActivity(new Intent(getContext(), fundTransfer.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
+                break;
+            case R.id.withdraw:
+                getActivity().startActivity(new Intent(getContext(), withraw.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
+                break;
+            case R.id.itoe:
+                getActivity().startActivity(new Intent(getContext(), sendtoewallet.class).putExtra("amount", iwalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().finish();
+                break;
         }
     }
 
@@ -128,8 +161,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     Log.d("MyApp", jsonObject.getString("ewallet"));
                     ewalletamount = jsonObject.getString("ewallet");
                     iwalletamount = jsonObject.getString("iwallet");
-                   // ewallet.setText("E-Wallet \n" + jsonObject.getString("ewallet"));
-                   // iwallet.setText("I-Wallet\n" + jsonObject.getString("iwallet"));
+                    // ewallet.setText("E-Wallet \n" + jsonObject.getString("ewallet"));
+                    // iwallet.setText("I-Wallet\n" + jsonObject.getString("iwallet"));
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());

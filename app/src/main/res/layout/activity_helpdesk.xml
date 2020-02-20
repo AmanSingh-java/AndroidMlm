@@ -28,10 +28,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:padding="20dp"
-        android:background="@drawable/custom"
+        android:gravity="center"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
     <ImageView
         android:layout_width="90dp"
@@ -39,16 +37,18 @@
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/todo"
         android:src="@mipmap/finna"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp" />
+        />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="HELPDESK"
-            android:textSize="30dp"
-            android:layout_marginLeft="20sp"/>
+            android:textColor="@color/background"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center" />
     </LinearLayout>
-<ImageView
+<ImageButton
+    android:id="@+id/genrateticket"
     android:layout_width="150dp"
     android:layout_height="150dp"
     android:layout_marginTop="20sp"
@@ -61,7 +61,8 @@
     android:text="Generate ticket"/>
 
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/tickethistory"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="20sp"
