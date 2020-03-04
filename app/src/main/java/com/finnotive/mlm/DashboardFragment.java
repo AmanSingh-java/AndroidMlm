@@ -121,7 +121,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.profile:
 
-                getActivity().startActivity(new Intent(getContext(), ViewProfile.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().startActivity(new Intent(getContext(), RenewGroup.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 getActivity().finish();
                 break;
             case R.id.rechagebybank:
@@ -129,15 +129,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 getActivity().finish();
                 break;
             case R.id.topup:
-                getActivity().startActivity(new Intent(getContext(), fundTransfer.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().startActivity(new Intent(getContext(), fundTransfer.class).putExtra("activity", "dashbord").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 getActivity().finish();
                 break;
             case R.id.withdraw:
-                getActivity().startActivity(new Intent(getContext(), withraw.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().startActivity(new Intent(getContext(), withraw.class).putExtra("amount", iwalletamount).putExtra("activity", "dashbord").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 getActivity().finish();
                 break;
             case R.id.itoe:
-                getActivity().startActivity(new Intent(getContext(), sendtoewallet.class).putExtra("amount", iwalletamount).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                getActivity().startActivity(new Intent(getContext(), sendtoewallet.class).putExtra("iwallet", iwalletamount).putExtra("activity", "dashbord").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 getActivity().finish();
                 break;
         }
@@ -161,8 +161,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     Log.d("MyApp", jsonObject.getString("ewallet"));
                     ewalletamount = jsonObject.getString("ewallet");
                     iwalletamount = jsonObject.getString("iwallet");
-                    // ewallet.setText("E-Wallet \n" + jsonObject.getString("ewallet"));
-                    // iwallet.setText("I-Wallet\n" + jsonObject.getString("iwallet"));
+                    SharedpreferenceUtility.getInstance(getContext()).putString("iwallet",iwalletamount);
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());
@@ -197,6 +196,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 
 }

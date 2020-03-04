@@ -153,6 +153,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        SharedpreferenceUtility.getInstance(getApplicationContext()).putBoolean("update",true);
                         startActivity(new Intent(getApplicationContext(), ViewProfile.class));
                         finish();
 

@@ -1,6 +1,5 @@
 package com.finnotive.mlm;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,12 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -43,13 +39,14 @@ public class ViewProfile extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         init();
-
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                finish();
-            }
+update=findViewById(R.id.confirm);
+        Boolean updatep=SharedpreferenceUtility.getInstance(getApplicationContext()).getBoolean("update");
+        if(updatep){
+update.setVisibility(View.GONE);
+        }
+        update.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            finish();
         });
     }
 
@@ -61,7 +58,7 @@ public class ViewProfile extends AppCompatActivity {
         altnumber = findViewById(R.id.altnumber);
         update = findViewById(R.id.confirm);
 
-        builder=new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(this);
         Log.d("MyApp", "First Name +" + SharedpreferenceUtility.getInstance(getApplicationContext()).getString(Constrains.firstName));
         Log.d("MyApp", "last Name +" + SharedpreferenceUtility.getInstance(getApplicationContext()).getString(Constrains.lastName));
         Log.d("MyApp", " Name +" + SharedpreferenceUtility.getInstance(getApplicationContext()).getString(Constrains.adharCard));
@@ -72,8 +69,9 @@ public class ViewProfile extends AppCompatActivity {
         pancard.setText(SharedpreferenceUtility.getInstance(getApplicationContext()).getString(Constrains.pancard));
         altnumber.setText(SharedpreferenceUtility.getInstance(getApplicationContext()).getString(Constrains.altNumber));
 
-updateprofile();
+        updateprofile();
     }
+
     void updateprofile() {
 
         Toast.makeText(getApplicationContext(), "please wait.....", Toast.LENGTH_SHORT).show();
@@ -87,49 +85,41 @@ updateprofile();
                 Log.d("MyApp", "response " + response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-
-
-                        // String number = jsonObject.getString("number");
-                        JSONObject json=jsonObject.getJSONObject("fields");
-                        String first_name = json.getString("first_name");
-                        name.setText(first_name);
-                        String last_name = json.getString("last_name");
-                        last.setText(last_name);
-
-                        String Pancard = json.getString("Pancard");
+                    JSONObject json = jsonObject.getJSONObject("fields");
+                    String first_name = json.getString("first_name");
+                    name.setText(first_name);
+                    String last_name = json.getString("last_name");
+                    last.setText(last_name);
+                    String Pancard = json.getString("Pancard");
                     pancard.setText(Pancard);
-                        String AltMobileNumber = json.getString("AltMobileNumber");
-                        altnumber.setText(AltMobileNumber);
-                        Log.d("MyApp", "fst" + first_name);
+                    String AltMobileNumber = json.getString("AltMobileNumber");
+                    altnumber.setText(AltMobileNumber);
+                    Log.d("MyApp", "fst" + first_name);
                     String AdharCard = json.getString("AdharCard");
                     adharcard.setText(AdharCard);
-                        Log.d("MyApp", "AdharCard" + AdharCard);
-                        msg("You have  successfully Updated profile");
-                        Log.d("MyApp", "Pancard" + Pancard);
-                        Log.d("MyApp", "AltMobileNumber" + AltMobileNumber);
-                        SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.firstName, first_name);
-                        SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.lastName, last_name);
-                        SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.adharCard, AdharCard);
-                        SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.pancard, Pancard);
-                        SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.altNumber, AltMobileNumber);
+                    Log.d("MyApp", "AdharCard" + AdharCard);
+                    Log.d("MyApp", "Pancard" + Pancard);
+                    Log.d("MyApp", "AltMobileNumber" + AltMobileNumber);
+                    SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.firstName, first_name);
+                    SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.lastName, last_name);
+                    SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.adharCard, AdharCard);
+                    SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.pancard, Pancard);
+                    SharedpreferenceUtility.getInstance(getApplicationContext()).putString(Constrains.altNumber, AltMobileNumber);
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    //  ProgressBarUtil.dismiss();
-                    Log.d("MyApp", error.toString());
-                    msg("Unexpected response ");
+            }, error -> {
+                //  ProgressBarUtil.dismiss();
+                Log.d("MyApp", error.toString());
+                msg("Unexpected response ");
 //                      Log.d("MyApp", error.getMessage());
-                }
             }) {
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<>();
                     //SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES,getActivity().MODE_PRIVATE);
                     params.put("user_id", SharedpreferenceUtility.getInstance(getApplicationContext()).getString("primaryNumber"));
                     return params;
@@ -155,13 +145,7 @@ updateprofile();
         //Setting message manually and performing action on button click
         builder.setMessage(msg)
                 .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(), ViewProfile.class));
-                        finish();
-
-                    }
-                });
+                .setPositiveButton("Ok", (dialog, id) -> dialog.cancel());
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually

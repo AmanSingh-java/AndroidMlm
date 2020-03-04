@@ -65,7 +65,6 @@
             android:layout_height="wrap_content"
             android:text="Issue"
             android:textColor="@color/orange_400"
-
             android:textSize="25dp"
             android:textStyle="bold" />
 

@@ -17,7 +17,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".WithrawHistory"></activity>
+        <activity android:name=".DemoWinner"> </activity>
+        <activity android:name=".RenewGroup" />
+        <activity android:name=".Winner" />
+        <activity android:name=".WithrawHistory" />
         <activity android:name=".PaymentHistory" />
         <activity
             android:name=".ViewProfile"
@@ -108,16 +111,16 @@
             android:name=".Dashboad"
             android:label="@string/title_activity_dashboad"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Signup"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Login"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -127,7 +130,7 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

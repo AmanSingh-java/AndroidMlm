@@ -15,5 +15,6 @@
     <dimen name="spacing_xlarge">35dp</dimen>
     <dimen name="spacing_xmlarge">40dp</dimen>
     <dimen name="spacing_xxlarge">50dp</dimen>
+    <dimen name="textsp">20sp</dimen>
 
 </resources>

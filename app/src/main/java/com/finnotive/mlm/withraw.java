@@ -30,7 +30,7 @@ public class withraw extends AppCompatActivity {
     private TextInputEditText enteramount, enterbankname, enteraccountno, reenteraccount, enterholdername, enterifsc;
     private RegistrationModel registrationModel;
     private AlertDialog.Builder builder;
-    private String balance;
+    private String balance,activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class withraw extends AppCompatActivity {
         Button confirm = findViewById(R.id.confirmwithdraw);
         Intent i=getIntent();
         balance=i.getStringExtra("iwallet");
+        activity=i.getStringExtra("activity");
         enteramount = findViewById(R.id.enteramount);
         enterbankname = findViewById(R.id.enterbankname);
         enteraccountno = findViewById(R.id.enteraccountno);
@@ -190,7 +191,13 @@ public class withraw extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet",balance));
-        finish();
+        if(activity.contains("wallet")) {
+            startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet", balance));
+            finish();
+        }
+        else {
+            startActivity(new Intent(getApplicationContext(),Dashboad.class));
+            finish();
+        }
     }
 }

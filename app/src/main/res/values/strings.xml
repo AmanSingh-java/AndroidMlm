@@ -35,7 +35,7 @@
     <string name="primary">PRIMARY</string>
     <string name="easy_steps_to_work_and_grow_with_finnotive_family">3 Easy steps to work and grow with Finnotive family!!!</string>
     <string name="enddate">enddate</string>
-    <string name="groupid">groupid</string>
+    <string name="groupd">groupid</string>
     <string name="startdate">startdate</string>
     <string name="home">Home</string>
     <string name="result_board">Result Board</string>
@@ -54,5 +54,14 @@
     <string name="bank_request">Bank Request</string>
     <string name="amount">Amount</string>
     <string name="recipient_id">Recipient_id</string>
+    <string name="groupid">GroupId  -  </string>
+    <string name="referral_id">Referral id</string>
+    <string name="status">Status</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="you_are_not_part_of_any_group_please_join_an_open_group">You are not part of any group please join an Open group</string>
+    <string name="timer">day : Hour : Min : Sec</string>
+    <string name="time">00 days</string>
 
 </resources>

@@ -67,7 +67,6 @@ public class Dashboad extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.dashboad, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -94,7 +93,6 @@ public class Dashboad extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -174,7 +172,9 @@ public class Dashboad extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        finish();
         super.onStop();
+
 
     }
 

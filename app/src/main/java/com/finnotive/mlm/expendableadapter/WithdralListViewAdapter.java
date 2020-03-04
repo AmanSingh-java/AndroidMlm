@@ -57,7 +57,12 @@ public class WithdralListViewAdapter extends ArrayAdapter<WithdralHistoryPojo> {
         account.setText(groupList.get(position).getAccount());
         amount.setText(groupList.get(position).getAmount());
         paymentid.setText(groupList.get(position).getPaymentid());
-        status.setText(groupList.get(position).getStatus());
+        if(groupList.get(position).getStatus().contains("0")) {
+            status.setText("Pending");
+        }
+        else {
+            status.setText("Done");
+        }
         ifsc.setText(groupList.get(position).getIfsc());
 
         return view;

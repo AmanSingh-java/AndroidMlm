@@ -6,15 +6,25 @@ public class SharePojo {
     private String startdate;
     private String enddate;
     private String desc;
+    private String status;
     public SharePojo() {
     }
 
-    public SharePojo(String groupid, String shareid, String startdate, String enddate, String desc) {
+    public SharePojo(String groupid, String shareid, String startdate, String enddate, String desc, String status) {
         this.groupid = groupid;
         this.shareid = shareid;
         this.startdate = startdate;
         this.enddate = enddate;
         this.desc = desc;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDesc() {
@@ -65,6 +75,7 @@ public class SharePojo {
                 ", startdate='" + startdate + '\'' +
                 ", enddate='" + enddate + '\'' +
                 ", desc='" + desc + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

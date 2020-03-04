@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,39 +22,39 @@
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="40dp"
             android:textColor="@color/orange_400"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="Referral id"
-            android:textSize="20dp"
-            ></TextView>
+            android:text="@string/referral_id"
+            android:textSize="@dimen/textsp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@string/status"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="@dimen/textsp"
             android:textColor="@color/orange_400"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
-            ></TextView>
+            android:layout_marginTop="40dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Amount"
+            android:text="@string/amount"
             android:layout_weight="1"
             android:textColor="@color/orange_400"
-            android:textSize="20dp"
+            android:textSize="@dimen/textsp"
             android:textStyle="bold"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="40dp"
-            ></TextView>
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +70,7 @@
             android:layout_weight="1"
             android:text="1234"
             android:textSize="20dp"
-            ></TextView>
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +80,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
-            ></TextView>
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +90,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
-            ></TextView>
+           />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,7 +107,7 @@
             android:textColor="#ffffff"
             android:text="3456"
             android:textSize="20dp"
-            ></TextView>
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,7 +117,7 @@
             android:textColor="#ffffff"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
-            ></TextView>
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,7 +127,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
-            ></TextView>
+            />
     </LinearLayout>
 
 

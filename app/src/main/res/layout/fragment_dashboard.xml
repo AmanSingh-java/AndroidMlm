@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/overlay_dark_10"
+    android:orientation="vertical"
+    tools:context=".OpenGroup">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:background="@drawable/custom"
+        android:backgroundTint="@android:color/white"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".6"
+            android:backgroundTint="@android:color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="@string/easy_steps_to_work_and_grow_with_finnotive_family"
+                android:textSize="17sp"
+                android:textColor="@color/background"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="15sp"
+                android:autoSizeMaxTextSize="24sp"
+                tools:ignore="UnusedAttribute" />
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/refer_your_friends_to_earn_the_referral_money_click_here_to_invite"
+                android:textColor="@color/background"
+                android:textSize="13sp"
+                tools:targetApi="jelly_bean" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/reacharge_your_wallet_to_get_started"
+                android:textColor="@color/background"
+                android:textSize="13sp"
+                tools:targetApi="jelly_bean" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/purchase_the_shares_and_reap_the_benefits"
+                android:textColor="@color/background"
+                android:textSize="13sp"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".9"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/th" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:background="@drawable/custom"
+        android:backgroundTint="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/profile"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/money"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Renew-Group"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/view"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/cart"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/buy_share"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/iwallet"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/wallet"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/i_wallet"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ewallet"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/rich"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/e_wallet"
+                android:textColor="@color/background" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:background="@drawable/custom"
+        android:backgroundTint="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/withdraw"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/withdraw"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/withdraw"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/itoe"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/transfer"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/i_to_e"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/topup"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/home"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/top_up"
+                android:textColor="@color/background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/rechagebybank"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/museum"
+                android:contentDescription="@string/todo"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bank_request"
+                android:textColor="@color/background" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

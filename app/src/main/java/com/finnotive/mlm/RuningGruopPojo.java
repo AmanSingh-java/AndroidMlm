@@ -5,15 +5,25 @@ public class RuningGruopPojo {
     private String EffectiveStartDate;
     private String EffectiveEndDateEffectiveEndDate;
     private String g_status;
+    private String luckydrawdate;
 
     public RuningGruopPojo() {
     }
 
-    public RuningGruopPojo(String gruopname, String effectiveStartDate, String effectiveEndDateEffectiveEndDate, String g_status) {
+    public RuningGruopPojo(String gruopname, String effectiveStartDate, String effectiveEndDateEffectiveEndDate, String g_status, String luckydrawdate) {
         this.gruopname = gruopname;
         EffectiveStartDate = effectiveStartDate;
         EffectiveEndDateEffectiveEndDate = effectiveEndDateEffectiveEndDate;
         this.g_status = g_status;
+        this.luckydrawdate = luckydrawdate;
+    }
+
+    public String getLuckydrawdate() {
+        return luckydrawdate;
+    }
+
+    public void setLuckydrawdate(String luckydrawdate) {
+        this.luckydrawdate = luckydrawdate;
     }
 
     public String getGruopname() {
@@ -55,6 +65,7 @@ public class RuningGruopPojo {
                 ", EffectiveStartDate='" + EffectiveStartDate + '\'' +
                 ", EffectiveEndDateEffectiveEndDate='" + EffectiveEndDateEffectiveEndDate + '\'' +
                 ", g_status='" + g_status + '\'' +
+                ", luckydrawdate='" + luckydrawdate + '\'' +
                 '}';
     }
 }

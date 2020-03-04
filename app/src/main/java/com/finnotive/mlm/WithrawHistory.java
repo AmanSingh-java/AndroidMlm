@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -69,7 +70,7 @@ public class WithrawHistory extends AppCompatActivity {
                         list.add(runingGruopPojo);
                     }
                     listView.setAdapter(new WithdralListViewAdapter(getApplicationContext(), list));
-
+                    Toast.makeText(WithrawHistory.this, listView.toString(), Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());

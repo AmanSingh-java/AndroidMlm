@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Winner">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.NoActionBar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/background"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Winner"/>
+    <LinearLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:background="@drawable/custom"
+        android:backgroundTint="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@android:color/white"
+            android:contentDescription="@string/todo"
+            android:src="@mipmap/finna" />
+
+        <LinearLayout
+            android:id="@+id/opengroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/spacing_middle"
+            android:paddingBottom="@dimen/spacing_middle">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/spacing_xxlarge"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/spacing_medium"
+                android:paddingRight="@dimen/spacing_medium">
+
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_xxlarge"
+                    android:layout_height="@dimen/spacing_xxlarge"
+                    android:contentDescription="@string/todo"
+                    android:src="@mipmap/finna"
+                    android:tint="@color/background" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="There is no winner in this group"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/grey_80" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listshare"/>
+
+</LinearLayout>

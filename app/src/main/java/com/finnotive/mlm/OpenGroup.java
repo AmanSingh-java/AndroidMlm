@@ -166,4 +166,11 @@ public class OpenGroup extends Fragment {
         alert.setTitle("Alert");
         alert.show();
     }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
+    }
 }

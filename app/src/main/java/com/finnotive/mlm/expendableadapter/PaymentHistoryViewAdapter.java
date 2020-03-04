@@ -1,6 +1,7 @@
 package com.finnotive.mlm.expendableadapter;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,13 +40,15 @@ public class PaymentHistoryViewAdapter extends ArrayAdapter<SharePojo> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         //getting the view
-        View view = layoutInflater.inflate(R.layout.custom_history, null, false);
+        @SuppressLint("ViewHolder") View view = layoutInflater.inflate(R.layout.custom_history, null, false);
 
         TextView groupid = view.findViewById(R.id.gid);
         TextView enddate = view.findViewById(R.id.enddate);
         TextView startdate = view.findViewById(R.id.startdate);
         TextView shareid = view.findViewById(R.id.shareid);
         TextView desc = view.findViewById(R.id.desc);
+        TextView status=view.findViewById(R.id.status);
+       status.setText("Success");
         groupid.setText(groupList.get(position).getGroupid());
         shareid.setText(groupList.get(position).getShareid());
         startdate.setText(groupList.get(position).getStartdate());

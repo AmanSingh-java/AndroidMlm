@@ -1,10 +1,8 @@
 package com.finnotive.mlm;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,10 +25,8 @@ import java.util.Objects;
 
 public class sendtoewallet extends AppCompatActivity {
     private EditText amount;
-    private Button send;
-    int bal;
     private AlertDialog.Builder builder;
-    private String balance;
+    private String balance,activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +35,22 @@ public class sendtoewallet extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent i = getIntent();
-       balance = i.getStringExtra("iwallet");
+        balance = i.getStringExtra("iwallet");
+        Log.d("MyApp","balance"+balance);
+        activity=i.getStringExtra("activity");
         amount = findViewById(R.id.amount);
-        send = findViewById(R.id.btnconfirm);
+        Button send = findViewById(R.id.btnconfirm);
         //bal = Integer.parseInt(amount.getText().toString());
         builder = new AlertDialog.Builder(this);
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (amount.getText().toString().equalsIgnoreCase(null)) {
-                    amount.setError("Please Enter The Amount");
-                    amount.requestFocus();
-                } else if (Integer.parseInt(amount.getText().toString()) <= Integer.parseInt(balance)) {
-                    getData();
-                } else {
-                    amount.setError("Please Enter Valid Amount");
-                    amount.requestFocus();
-                }
+        send.setOnClickListener(v -> {
+            if (amount.getText().toString().isEmpty()) {
+                amount.setError("Please Enter The Amount");
+                amount.requestFocus();
+            } else if (Integer.parseInt(amount.getText().toString()) <= Integer.parseInt(balance.trim())) {
+                getData();
+            } else if (Integer.parseInt(amount.getText().toString().trim()) > Integer.parseInt(balance.trim())){
+                amount.setError("You have insufficient balance");
+                amount.requestFocus();
             }
         });
     }
@@ -73,7 +68,7 @@ public class sendtoewallet extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String res = jsonObject.getString("amount");
-                    if (!res.equalsIgnoreCase(null)) {
+                    if(!res.isEmpty()) {
                         msg();
                     }
 
@@ -113,12 +108,10 @@ public class sendtoewallet extends AppCompatActivity {
         //Setting message manually and performing action on button click
         builder.setMessage("You have transfered amount successfully")
                 .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(getApplicationContext(), Dashboad.class));
-                        finish();
+                .setPositiveButton("Ok", (dialog, id) -> {
+                    startActivity(new Intent(getApplicationContext(), Dashboad.class));
+                    finish();
 
-                    }
                 });
         //Creating dialog box
         AlertDialog alert = builder.create();
@@ -130,7 +123,13 @@ public class sendtoewallet extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet",balance));
-        finish();
+        if(activity.contains("wallet")) {
+            startActivity(new Intent(getApplicationContext(), Iwallet.class).putExtra("iwallet", SharedpreferenceUtility.getInstance(this).getString("iwallet")));
+            finish();
+        }
+        else {
+            startActivity(new Intent(getApplicationContext(),Dashboad.class));
+            finish();
+        }
     }
 }

@@ -24,27 +24,24 @@ public class Iwallet extends AppCompatActivity {
         txtamout = findViewById(R.id.amount);
         Intent i = getIntent();
         amount = i.getStringExtra("iwallet");
-
         Toast.makeText(getApplicationContext(), amount, Toast.LENGTH_LONG).show();
         Button sendtoewallet = findViewById(R.id.sendtoe);
+        txtamout.setText(amount);
         withraw.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), com.finnotive.mlm.withraw.class).putExtra("iwallet", txtamout.getText().toString()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            startActivity(new Intent(getApplicationContext(), com.finnotive.mlm.withraw.class).putExtra("iwallet", txtamout.getText().toString()).putExtra("activity", "wallet").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             finish();
         });
 
-        sendtoewallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Iwallet.this.startActivity(new Intent(Iwallet.this.getApplicationContext(), com.finnotive.mlm.sendtoewallet.class).putExtra("iwallet", txtamout.getText().toString()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                finish();
-            }
+        sendtoewallet.setOnClickListener(v -> {
+            Iwallet.this.startActivity(new Intent(Iwallet.this.getApplicationContext(), com.finnotive.mlm.sendtoewallet.class).putExtra("iwallet", txtamout.getText().toString()).putExtra("activity", "wallet").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            finish();
         });
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        txtamout.setText(amount);
+
     }
 
     @Override

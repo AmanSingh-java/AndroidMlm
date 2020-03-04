@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -14,7 +15,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.finnotive.mlm.expendableadapter.PaymentHistoryViewAdapter;
-import com.finnotive.mlm.expendableadapter.ShareListViewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -61,19 +61,23 @@ public class PaymentHistory extends AppCompatActivity {
                         runingGruopPojo.setEnddate(jsonObject.getString("recipient_id"));
                         runingGruopPojo.setShareid(jsonObject.getString("amount"));
                         runingGruopPojo.setDesc(jsonObject.getString("description"));
+                      //  runingGruopPojo.setStatus(jsonObject.getString("status"));
                         Log.d("MyApp", "share view " + runingGruopPojo);
                         list.add(runingGruopPojo);
                     }
                     listView.setAdapter(new PaymentHistoryViewAdapter(getApplicationContext(), list));
+                    Toast.makeText(this, listView.toString(), Toast.LENGTH_SHORT).show();
 
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());
-                    //  Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                   //  Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
                 }
 
             }, error -> {
                 //  ProgressBarUtil.dismiss();
+               // Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+
                 Log.d("MyApp", error.toString());
             }) {
                 @Override

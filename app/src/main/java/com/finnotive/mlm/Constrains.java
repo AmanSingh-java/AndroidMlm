@@ -30,4 +30,6 @@ public interface Constrains {
     String  helpdesk ="http://103.145.50.189:8080/helpdesk/" ;
     String  paymentHistory ="http://103.145.50.189:8080/checkPaymentHistory/" ;
     String withdralhistory = "http://103.145.50.189:8080/checkWithdrawalRequest/";
+    String tickethistory="http://103.145.50.189:8080/tickethistory/";
+    String winner="http://103.145.50.189:8080/winnerResult/";
 }

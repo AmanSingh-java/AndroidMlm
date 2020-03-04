@@ -124,12 +124,11 @@ public class Signup extends AppCompatActivity implements View.OnClickListener, C
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.signup:
-                if (check()) {
-                   // Toast.makeText(getApplicationContext(), "validating", Toast.LENGTH_LONG).show();
-                    Register();
-                }
+        if (v.getId() == R.id.signup) {
+            if (check()) {
+                // Toast.makeText(getApplicationContext(), "validating", Toast.LENGTH_LONG).show();
+                Register();
+            }
         }
 
     }
@@ -191,16 +190,15 @@ public class Signup extends AppCompatActivity implements View.OnClickListener, C
                         }
                         if (refercoderes.contains("Refercode is not exist")) {
                             message("Refercode is not exist");
-                            Log.d("MyApp", "Refercode   54 is not exist");
+                            Log.d("MyApp", "Refercode does not exist");
                         } else {
                             message("Your account is successfully created");
                             SharedpreferenceUtility.getInstance(Signup.this.getApplicationContext()).putString(Constrains.refercode, refercoderes);
                         }
                     }
 
+                    Success("Your account is successfully created");
 
-                    Signup.this.startActivity(new Intent(Signup.this.getApplicationContext(), Login.class));
-                    finish();
 
                 } catch (Exception e) {
                     Log.d("MyApp", "status" + e.toString());
@@ -292,12 +290,9 @@ public class Signup extends AppCompatActivity implements View.OnClickListener, C
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(this);
 
-        builder.setMessage("Mobile Number or Password does not exist").setTitle("login fail");
 
         //Setting message manually and performing action on button click
-        builder.setMessage(msg)
-                .setCancelable(true)
-                .setCancelable(false)
+        builder.setMessage(msg).setCancelable(false)
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -311,6 +306,30 @@ public class Signup extends AppCompatActivity implements View.OnClickListener, C
         alert.setTitle("Signup Fails");
         alert.show();
     }
+    void Success(String msg) {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(this);
 
 
+        //Setting message manually and performing action on button click
+        builder.setMessage(msg).setCancelable(false)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Signup.this.startActivity(new Intent(Signup.this.getApplicationContext(), Login.class));
+                        finish();
+                    }
+                });
+
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Success");
+        alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
+    }
 }

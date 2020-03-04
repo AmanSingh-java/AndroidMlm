@@ -27,7 +27,7 @@ public class Ewallet extends AppCompatActivity {
         topup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), fundTransfer.class));
+                startActivity(new Intent(getApplicationContext(), fundTransfer.class).putExtra("activity", "wallet"));
                 finish();
             }
         });

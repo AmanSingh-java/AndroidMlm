@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class RunningGroup extends Fragment {
         View root = inflater.inflate(R.layout.fragment_send, container, false);
          listView=root.findViewById(R.id.list);
          linearLayout=root.findViewById(R.id.view);
-        FloatingActionButton join = root.findViewById(R.id.joingroup);
+        ImageButton join = root.findViewById(R.id.joingroup);
         join.setOnClickListener(v12 -> startActivity(new Intent(getContext(), GroupJoining.class)));
 getData();
 
@@ -121,6 +122,13 @@ getData();
             requestQueue.add(sr);
         } catch (Exception e) {
             //Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
         }
     }
 }

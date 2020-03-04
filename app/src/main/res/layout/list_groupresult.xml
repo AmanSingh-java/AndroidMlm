@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewshare"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_large"
+    android:background="@drawable/custom"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/groupid"
+                    android:textColor="@color/orange_400"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/groupid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/groupid"
+                    android:gravity="center"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/days"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_timer"
+            android:textColor="@color/background"
+            android:text="@string/time" />
+
+        <TextView
+            android:id="@+id/hours"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_timer"
+            android:textColor="@color/background"
+
+            android:text="@string/time"
+            />
+
+        <TextView
+            android:id="@+id/min"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_timer"
+            android:textColor="@color/background"
+            android:text="@string/time"
+            />
+        <TextView
+            android:id="@+id/sec"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:background="@drawable/custom_timer"
+            android:textColor="@color/background"
+            android:text="@string/time"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="@color/background"
+            android:text="Day" />
+
+        <TextView
+
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+
+
+            android:textColor="@color/background"
+
+            android:text="Hour"
+            />
+
+        <TextView
+
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+
+
+            android:textColor="@color/background"
+            android:text="Min"
+            />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+
+            android:textColor="@color/background"
+            android:text="Sec"
+            />
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+

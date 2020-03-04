@@ -28,9 +28,7 @@ import com.finnotive.mlm.R;
 import com.finnotive.mlm.RuningGruopPojo;
 import com.finnotive.mlm.SharedpreferenceUtility;
 import com.finnotive.mlm.expendableadapter.CustomListViewAdapter;
-import com.finnotive.mlm.ui.send.RunningGroup;
 import com.finnotive.mlm.ui.send.SendViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,13 +58,14 @@ public class CloseGroupFregment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_close_group, container, false);
         linearLayout=root.findViewById(R.id.view);
         ImageButton join = root.findViewById(R.id.joingroup);
+        listView=root.findViewById(R.id.list);
         join.setOnClickListener(v12 -> startActivity(new Intent(getContext(), GroupJoining.class)));
         getData();
 
         return root;
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    void getData() {
+    private void getData() {
         Toast.makeText(getContext(), "please wait.....", Toast.LENGTH_SHORT).show();
         try {
 
@@ -123,6 +122,13 @@ public class CloseGroupFregment extends Fragment {
             requestQueue.add(sr);
         } catch (Exception e) {
          //   Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
         }
     }
 }
